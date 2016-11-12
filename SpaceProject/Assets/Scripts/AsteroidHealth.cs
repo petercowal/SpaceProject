@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHealth : MonoBehaviour {
-	public int maxHealth = 10;
+public class AsteroidHealth : MonoBehaviour {
+	public int maxHealth = 3;
 	private int health;
 	private GameController gameController;
 
@@ -30,7 +30,7 @@ public class EnemyHealth : MonoBehaviour {
 			Destroy(other.gameObject);
 			health--;
 			if(health <= 0){
-				gameController.addKillShipScore (1);
+				gameController.AddScore (1);
 				Destroy(gameObject);
 
 			}

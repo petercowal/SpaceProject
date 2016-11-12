@@ -13,22 +13,29 @@ public class destroyController2 : MonoBehaviour {
 	public GameObject hitEffect;
 	public int maxHealth = 10;
 	private int health;
-
+	private GameController gameController;
 	// Use this for initialization
 	void Start () {
 		health = maxHealth;
 		GetComponent<Rigidbody> ().AddRelativeTorque (Random.insideUnitSphere, ForceMode.VelocityChange);
-
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null)
+		{
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
 	}
 	void OnTriggerEnter(Collider other) 
 	{
 		if (other.CompareTag("PlayerShot"))
 		{
+			
+
 			Instantiate (hitEffect, other.transform.position, other.transform.rotation);
 
 			Destroy(other.gameObject);
 			health--;
 			if(health <= 0){
+				gameController.AddScore (1);
 				Destroy(gameObject);
 				for(int i = 0; i < NUM_PIECES; i++) {
 					astType = Random.Range (0, 2);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour {
@@ -8,7 +9,14 @@ public class GameController : MonoBehaviour {
 	public GameObject planet;
 	private Transform player;
 	public int cellSize = 800;
+	public Text scoreText;
+	public Text shipText;
+	public Text gameOverText;
 
+	private bool gameOver;
+	private bool restart;
+	private int score;
+	private int shipsKilled;
 	float astProb = .3f;
 	float enemyProb = .5f;
 	float planetProb = .55f;
@@ -27,6 +35,14 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
+
+		gameOver = false;
+		restart = false;
+		shipText.text = "";
+		gameOverText.text = "";
+		score = 0;
+		shipsKilled = 0;
+		UpdateScore ();
 
 	}
 	
@@ -47,7 +63,38 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
+
+		if (restart)
+		{
+			if (Input.GetKeyDown (KeyCode.R))
+			{
+				Application.LoadLevel (Application.loadedLevel);
+			}
+		}
 	
+	}
+
+	public void AddScore (int newScoreValue)
+	{
+		score += newScoreValue;
+		UpdateScore ();
+	}
+
+	public void addKillShipScore (int newScoreValue){
+		shipsKilled += newScoreValue;
+		UpdateScore ();
+	}
+
+	void UpdateScore ()
+	{
+		scoreText.text = "Asteroids Mined: " + score;
+		shipText.text = "Ships Destroyed: " + shipsKilled;
+	}
+
+	public void GameOver ()
+	{
+		gameOverText.text = "Game Over!";
+		gameOver = true;
 	}
 
 	GameObject spawnNew(Vector3 t){
