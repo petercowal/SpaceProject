@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Lazers.unity
+- path: Assets/Scenes/asteroiddestroy.unity
   isLoaded: 1
   isActive: 1
