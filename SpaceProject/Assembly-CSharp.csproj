@@ -45,11 +45,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\DeathTimer.cs" />
-     <Compile Include="Assets\EnemyHealth.cs" />
+     <Compile Include="Assets\GrowOnCreate.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
+     <Compile Include="Assets\Scripts\DeathTimer.cs" />
      <Compile Include="Assets\Scripts\EnemyAI_1.cs" />
+     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\FieldGenerator.cs" />
      <Compile Include="Assets\Scripts\FlightController.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\PlanetController.cs" />
+     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\ShotController.cs" />
      <Compile Include="Assets\Scripts\destroyController2.cs" />
  <Reference Include="UnityEngine.Networking">

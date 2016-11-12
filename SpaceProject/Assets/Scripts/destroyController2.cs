@@ -7,35 +7,46 @@ public class destroyController2 : MonoBehaviour {
 	public GameObject asteroid1;
 	public GameObject asteroid2;
 	GameObject clone;
-	int scaleFactor = 8; 
+	int scaleFactor = 2; 
 	int astType;
+
+	public GameObject hitEffect;
+	public int maxHealth = 10;
+	private int health;
 
 	// Use this for initialization
 	void Start () {
+		health = maxHealth;
+		GetComponent<Rigidbody> ().AddRelativeTorque (Random.insideUnitSphere, ForceMode.VelocityChange);
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKey(KeyCode.Space))
+	void OnTriggerEnter(Collider other) 
+	{
+		if (other.CompareTag("PlayerShot"))
 		{
-			Destroy(gameObject);
-			for(int i = 0; i < NUM_PIECES; i++) {
-				astType = Random.Range (0, 2);
-				if (astType == 0) {
-					clone = (GameObject)Instantiate (asteroid, Random.insideUnitSphere * 2, Random.rotation);
-				} else if (astType == 1) {
-					clone = (GameObject)Instantiate (asteroid1, Random.insideUnitSphere * 2, Random.rotation);
-				} else {
-					clone = (GameObject)Instantiate (asteroid2, Random.insideUnitSphere * 2, Random.rotation);
+			Instantiate (hitEffect, other.transform.position, other.transform.rotation);
+
+			Destroy(other.gameObject);
+			health--;
+			if(health <= 0){
+				Destroy(gameObject);
+				for(int i = 0; i < NUM_PIECES; i++) {
+					astType = Random.Range (0, 2);
+					if (astType == 0) {
+						clone = (GameObject)Instantiate (asteroid, transform.position + Random.insideUnitSphere * 4, Random.rotation);
+					} else if (astType == 1) {
+						clone = (GameObject)Instantiate (asteroid1, transform.position + Random.insideUnitSphere * 4, Random.rotation);
+					} else {
+						clone = (GameObject)Instantiate (asteroid2, transform.position + Random.insideUnitSphere * 4, Random.rotation);
+					}
+					clone.GetComponent<Rigidbody>().velocity = Random.insideUnitSphere * scaleFactor;
+					float scale = Random.Range (.01f, .3f);
+					clone.transform.localScale += new Vector3(scale, scale, scale);
 				}
-				clone.GetComponent<Rigidbody>().velocity = Random.insideUnitSphere * scaleFactor;
-				float scale = Random.Range (.01f, .3f);
-				clone.transform.localScale += new Vector3(scale, scale, scale);
 			}
 		}
 
-
 	}
+
 }
 	

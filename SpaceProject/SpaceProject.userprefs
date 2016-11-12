@@ -1,13 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EnemyHealth.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\FieldGenerator.cs">
     <Files>
       <File FileName="Assets\Scripts\FlightController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyAI_1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyAI_1.cs" Line="38" Column="130" />
       <File FileName="Assets\Scripts\Bullet.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\ShotController.cs" Line="1" Column="1" />
-      <File FileName="Assets\EnemyHealth.cs" Line="28" Column="25" />
+      <File FileName="Assets\EnemyHealth.cs" Line="18" Column="2" />
       <File FileName="Assets\DeathTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\destroyController2.cs" Line="1" Column="1" />
+      <File FileName="Assets\FieldGenerator.cs" Line="28" Column="8" />
+      <File FileName="Assets\PlayerHealth.cs" Line="27" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

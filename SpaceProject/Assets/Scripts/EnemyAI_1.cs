@@ -11,6 +11,11 @@ public class EnemyAI_1 : MonoBehaviour {
 
 	private Vector3 runVector;
 	public float accelerationRate;
+
+	public GameObject shot;
+	public Transform shotSpawn;
+	public float fireRate = 0.1f;
+	private float fireTime;
 	// Use this for initialization
 	void Awake () {
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -20,12 +25,26 @@ public class EnemyAI_1 : MonoBehaviour {
 		upVector = Random.onUnitSphere;
 
 	}
-	
+	void OnTriggerStay(Collider other){
+		if (other.CompareTag ("ProximitySphere")) {
+			rb.AddForce (accelerationRate * 0.5f * (transform.position - other.transform.position).normalized, ForceMode.Acceleration);
+		}
+	}
+
+	void fire(){
+		if (Time.time > fireTime) {
+			fireTime = Time.time + fireRate;
+
+			Instantiate(shot, shotSpawn.position, Quaternion.LookRotation(player.position - shotSpawn.position + Random.insideUnitSphere*4));
+		}
+	}
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
 
 		if (state == State.Charge) {
+			fire ();
 			if ((player.position - transform.position).magnitude > 25) {
 				rb.AddForce (accelerationRate * (player.position - transform.position).normalized, ForceMode.Acceleration);
 			} else {
@@ -50,7 +69,8 @@ public class EnemyAI_1 : MonoBehaviour {
 				rb.AddForce (accelerationRate * (Vector3.Cross (player.position - transform.position, upVector))
 					.normalized, ForceMode.Acceleration);
 			}
-		}
+		} 
+			
 		rb.MoveRotation (Quaternion.LookRotation (rb.velocity, upVector));
 	}
 }
