@@ -11,12 +11,17 @@ public class FlightController : MonoBehaviour {
 	private float fspeed;
 	// Use this for initialization
 	void Start () {
+
+
 		rb = GetComponent<Rigidbody>();
 		fspeed = 0;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		Cursor.lockState = CursorLockMode.Locked;
+
 		float h = Input.GetAxis("Mouse X");
 		float v = -Input.GetAxis("Mouse Y");
 		float tilt = 0;
