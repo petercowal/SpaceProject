@@ -63,10 +63,12 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
-
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			Application.Quit ();
+		}
 		if (gameOver)
 		{
-			if (Input.GetKeyDown (KeyCode.R))
+			if (Input.GetButton("Restart"))
 			{
 				Application.LoadLevel (Application.loadedLevel);
 			}
