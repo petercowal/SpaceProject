@@ -17,7 +17,6 @@ public class EnemyHealth : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other) 
 	{
-		print ("Hit by trigger");
 		if (other.CompareTag("PlayerShot"))
 		{
 			Instantiate (hitEffect, other.transform.position, other.transform.rotation);
