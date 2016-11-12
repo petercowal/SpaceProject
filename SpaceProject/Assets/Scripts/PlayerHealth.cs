@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour {
 	public float maxHealth = 100;
 	public Slider healthSlider;
 	public float multiplier = .25f;
+	public AudioClip hitClip;
+	public AudioClip deathClip;
 	// Use this for initialization
 	private GameController gameController;
 
@@ -21,10 +23,21 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void takeDamage(float amt){
-		health -= amt*multiplier;
-		healthSlider.value = health;
-		if(health <= 0){
-			gameController.GameOver ();
+
+
+		if (health > 0) {
+			health -= amt * multiplier;
+			healthSlider.value = health;
+			if (health <= 0) {
+				gameController.GameOver ();
+				GetComponent<AudioSource> ().clip = deathClip;
+				GetComponent<AudioSource> ().Play ();
+				GetComponent<FlightController> ().enabled = false;
+				GetComponent<ShotController> ().enabled = false;
+			} else {
+				GetComponent<AudioSource> ().clip = hitClip;
+				GetComponent<AudioSource> ().Play ();
+			}
 		}
 
 	}

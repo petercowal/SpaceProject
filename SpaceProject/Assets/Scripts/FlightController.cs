@@ -27,13 +27,14 @@ public class FlightController : MonoBehaviour {
 
 		float h = Input.GetAxis("Mouse X");
 		float v = -Input.GetAxis("Mouse Y");
-		float tilt = 0;
+		/*float tilt = 0;
 		if (Input.GetKey (KeyCode.Q)) {
 			tilt--;
 		}
 		if (Input.GetKey (KeyCode.E)) {
 			tilt++;
-		}
+		}*/
+		float tilt = Input.GetAxis ("Roll");
 
 		rb.AddRelativeTorque (Vector3.up * h * rotationRate, ForceMode.Acceleration);
 		rb.AddRelativeTorque (Vector3.right * v * rotationRate, ForceMode.Acceleration);

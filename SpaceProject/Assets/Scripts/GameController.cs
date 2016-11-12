@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour {
 			}
 		}
 
-		if (restart)
+		if (gameOver)
 		{
 			if (Input.GetKeyDown (KeyCode.R))
 			{

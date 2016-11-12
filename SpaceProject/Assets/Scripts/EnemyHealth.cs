@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour {
 	private GameController gameController;
 
 	public GameObject hitEffect;
+	public GameObject deathEffect;
+	public AudioClip hitClip;
+	public AudioClip deathClip;
 	// Use this for initialization
 	void Start () {
 		health = maxHealth;
@@ -29,10 +32,15 @@ public class EnemyHealth : MonoBehaviour {
 
 			Destroy(other.gameObject);
 			health--;
-			if(health <= 0){
+			if (health <= 0) {
 				gameController.addKillShipScore (1);
-				Destroy(gameObject);
-
+				Destroy (gameObject);
+				Instantiate (deathEffect, transform.position, transform.rotation);
+				//GetComponent<AudioSource> ().clip = deathClip;
+				//GetComponent<AudioSource> ().Play ();
+			} else {
+				//GetComponent<AudioSource> ().clip = hitClip;
+				//GetComponent<AudioSource> ().Play ();
 			}
 		}
 
