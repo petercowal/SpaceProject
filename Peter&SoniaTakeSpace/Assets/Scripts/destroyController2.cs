@@ -2,11 +2,13 @@
 using System.Collections;
 
 public class destroyController2 : MonoBehaviour {
-	int NUM_PIECES = 8;
+	public int NUM_PIECES = 10;
 	public GameObject asteroid;
+	public GameObject asteroid1;
+	public GameObject asteroid2;
 	GameObject clone;
-	Rigidbody rb;
 	int scaleFactor = 8; 
+	int astType;
 
 	// Use this for initialization
 	void Start () {
@@ -19,8 +21,17 @@ public class destroyController2 : MonoBehaviour {
 		{
 			Destroy(gameObject);
 			for(int i = 0; i < NUM_PIECES; i++) {
-				clone = (GameObject)Instantiate(asteroid, Random.insideUnitSphere * 2, transform.rotation);
+				astType = Random.Range (0, 2);
+				if (astType == 0) {
+					clone = (GameObject)Instantiate (asteroid, Random.insideUnitSphere * 2, Random.rotation);
+				} else if (astType == 1) {
+					clone = (GameObject)Instantiate (asteroid1, Random.insideUnitSphere * 2, Random.rotation);
+				} else {
+					clone = (GameObject)Instantiate (asteroid2, Random.insideUnitSphere * 2, Random.rotation);
+				}
 				clone.GetComponent<Rigidbody>().velocity = Random.insideUnitSphere * scaleFactor;
+				float scale = Random.Range (.01f, .3f);
+				clone.transform.localScale += new Vector3(scale, scale, scale);
 			}
 		}
 
