@@ -45,8 +45,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DeathTimer.cs" />
+     <Compile Include="Assets\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\EnemyAI_1.cs" />
      <Compile Include="Assets\Scripts\FlightController.cs" />
+<<<<<<< HEAD
+     <Compile Include="Assets\Scripts\ShotController.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+=======
+>>>>>>> origin/master
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
