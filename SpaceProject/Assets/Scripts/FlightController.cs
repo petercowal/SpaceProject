@@ -2,10 +2,13 @@
 using System.Collections;
 
 public class FlightController : MonoBehaviour {
-	public float forwardSpeed;
-	public float strafeSpeed;
-	public float rotationRate;
-	public float accelerationRate;
+
+	public float hyperSpeed = 160f;
+
+	public float forwardSpeed = 20f;
+	public float strafeSpeed = 5f;
+	public float rotationRate = 10f;
+	public float accelerationRate = 0.5f;
 	private Rigidbody rb;
 
 	private float fspeed;
@@ -47,5 +50,12 @@ public class FlightController : MonoBehaviour {
 
 		float s = Input.GetAxis ("Horizontal");
 		rb.AddRelativeForce (Vector3.right * s * strafeSpeed, ForceMode.Acceleration);
+
+		if (Input.GetButton ("Jump")) {
+			rb.AddRelativeForce (Vector3.forward * hyperSpeed, ForceMode.Acceleration);
+		} else {
+
+		}
+
 	}
 }
