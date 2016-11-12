@@ -22,7 +22,6 @@ public class destroyController2 : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other) 
 	{
-		print ("Hit by trigger");
 		if (other.CompareTag("PlayerShot"))
 		{
 			Instantiate (hitEffect, other.transform.position, other.transform.rotation);
